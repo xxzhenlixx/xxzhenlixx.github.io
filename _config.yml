@@ -1,0 +1,44 @@
+---
+
+# Site details
+author: "Zhen Li"
+title: "Zhen Li"
+description: "Welcome to the life of Zhen Li!"
+
+
+# Site configuration
+permalink: /:title/
+timezone: Europe/Amsterdam
+
+exclude:
+  - CNAME
+  - LICENSE
+  - README.md
+
+defaults:
+  - scope:
+      path: "_posts/cats"
+      type: posts
+    values:
+      category: Cats
+      permalink: /cats/:slug/
+  - scope:
+      path: "_posts/lifestyle"
+      type: posts
+    values:
+      category: Lifestyle
+      permalink: /lifestyle/:slug/
+  - scope:
+      path: "_posts/remote-sensing"
+      type: posts
+    values:
+      category: Remote Sensing
+      permalink: /remote-sensing/:slug/
+
+
+# Plugin configuration
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jemoji

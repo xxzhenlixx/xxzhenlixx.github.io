@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>{% if page.title %}{{ page.title }} &mdash; {%endif %}{{ site.title }}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ '/assets/favicon.png' }}">
+
+    <!-- Vendor CSS Files -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Template Main CSS Files -->
+    <link href="{{ '/assets/css/variables.css' }}" rel="stylesheet">
+    <link href="{{ '/assets/css/main.css' }}" rel="stylesheet">
+
+    <!-- Highlight CSS files -->
+    <link href="{{ '/assets/css/highlight.css' }}" rel="stylesheet">
+
+    {% feed_meta %}
+
+    {% seo title=false %}
+
+    <!-- =======================================================
+    * Template Name: ZenBlog - v1.3.0
+    * Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
+    * Author: BootstrapMade.com
+    * License: https:///bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+            <a href="{% link index.md %}" class="logo d-flex align-items-center"><h1>Zhen Li</h1></a>
+            <div class="position-relative">
+                <a href="https://www.instagram.com/hellokitty_is_a_tiger/" class="mx-2"><span class="bi-instagram"></span></a>
+
+                {% comment %}
+                <!-- ======= Search Form ======= -->
+                <a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a>
+                <div class="search-form-wrap js-search-form-wrap">
+                    <form action="search.html" class="search-form">
+                        <span class="icon bi-search"></span>
+                        <input type="text" placeholder="Search" class="form-control">
+                        <button class="btn js-search-close"><span class="bi-x"></span></button>
+                    </form>
+                </div>
+                {% endcomment %}
+            </div>
+        </div>
+    </header>
+
+    <!-- ======= Page content ======= -->
+    <main id="main">
+        {{ content }}
+    </main>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="footer-content">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-6 col-lg-8">
+                        <h3 class="footer-heading">About Zhen Li</h3>
+                        <p>{{ site.description }}</p>
+                    </div>
+                    {% assign all_post_categories = site.posts | map: 'category' | uniq | sort_natural %}
+                    {% if all_post_categories.size > 0 %}
+                    <div class="col-6 col-lg-4">
+                        <h3 class="footer-heading">Categories</h3>
+                        <ul class="footer-links list-unstyled">
+                            {% for category in all_post_categories %}
+                            <li><a href="/{{ category | slugify }}"><i class="bi bi-chevron-right"></i> {{ category }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-legal">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <div class="copyright">© Copyright Zhen Li. All Rights Reserved</div>
+                        <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="social-links mb-3 mb-lg-0 text-center text-md-end">
+                            <a href="https://www.instagram.com/hellokitty_is_a_tiger/" class="instagram"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vendor JS Files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2/dist/js/bootstrap.min.js"></script>
+
+    {% comment %}
+    <!-- Template Main JS File -->
+    <script src="{{ '/assets/js/main.js' }}"></script>
+    {% endcomment %}
+</body>
+
+</html>

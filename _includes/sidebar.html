@@ -1,0 +1,31 @@
+<!-- ======= Sidebar ======= -->
+{% assign latest_posts = site.posts | slice: 0,5 %}
+{% if latest_posts.size > 0 %}
+<!-- Latest posts -->
+<div class="aside-block">
+    <h3 class="aside-title">Latest</h3>
+
+    {% for post in latest_posts %}
+    <div class="post-entry-1 border-bottom">
+        <div class="post-meta"><span class="date">{{ post.category }}</span>
+            <span class="mx-1">&bullet;</span> <span>{{ post.date | date_to_long_string }}</span></div>
+        <h2 class="mb-2"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        <div>{{ post.excerpt }}</div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endif %}
+
+{% assign all_post_categories = site.posts | map: 'category' | uniq | sort_natural %}
+{% if all_post_categories.size > 0 %}
+<!-- Categories -->
+<div class="aside-block">
+    <h3 class="aside-title">Categories</h3>
+    <ul class="aside-links list-unstyled">
+        {% for category in all_post_categories %}
+        <li><a href="/{{ category | slugify }}"><i class="bi bi-chevron-right"></i> {{ category }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
